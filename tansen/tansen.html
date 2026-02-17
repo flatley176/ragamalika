@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Melakarta Master - Final</title>
+    <style>
+        :root { --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --text: #f8fafc; --success: #10b981; --warning: #f59e0b; --secondary: #6366f1; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; height: 100vh; margin: 0; overflow: hidden; }
+        
+        #sidebar-left { width: 300px; background: var(--panel); border-right: 1px solid #334155; display: flex; flex-direction: column; z-index: 100; }
+        #sidebar-right { width: 450px; background: var(--panel); border-left: 1px solid #334155; display: flex; flex-direction: column; }
+        .scroll-area { flex-grow: 1; overflow-y: auto; padding: 20px; }
+        
+        .pane-title { font-size: 0.7rem; color: var(--accent); font-weight: 800; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        select { width: 100%; padding: 12px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 8px; font-size: 0.9rem; margin-bottom: 15px; cursor: pointer; }
+
+        .delta-card { background: #0f172a; border-radius: 12px; border: 1px solid var(--accent); padding: 15px; margin-bottom: 20px; animation: slideIn 0.2s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+        .delta-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #1e293b; }
+        .note-box { flex: 1; text-align: center; padding: 8px; background: #1e293b; border-radius: 4px; font-family: monospace; font-size: 1rem; }
+        .note-box.shift { color: var(--warning); border: 1px solid var(--warning); font-weight: bold; }
+        
+        .btn-pivot { background: var(--secondary); color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.7rem; font-weight: bold; }
+        .btn-group { display: flex; gap: 8px; margin-top: 12px; }
+        .btn-play { flex: 1; padding: 10px; border: none; border-radius: 6px; color: white; font-size: 0.7rem; font-weight: bold; cursor: pointer; }
+
+        .keyboard { display: flex; height: 260px; margin-top: 20px; position: relative; }
+        .key { width: 45px; height: 200px; border: 1px solid #000; background: #f1f5f9; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 15px; border-radius: 0 0 8px 8px; color: #64748b; font-size: 0.6rem; cursor: pointer; z-index: 1; transition: 0.1s; user-select: none; }
+        .key.black { width: 34px; height: 130px; background: #0f172a; margin-left: -17px; margin-right: -17px; z-index: 10; border-radius: 0 0 4px 4px; }
+        .key.active-raga { background: #fff; border-bottom: 8px solid var(--accent); color: #1e293b; font-weight: 900; }
+        .key.playing { background: var(--warning) !important; color: #000 !important; transform: translateY(2px); }
+        .ghost-label { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); color: var(--warning); font-weight: bold; font-size: 0.8rem; background: #1e293b; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--warning); display: none; pointer-events: none; z-index: 50; }
+
+        main { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #111827; }
+        .kb-hint { font-size: 0.7rem; color: #475569; margin-top: 10px; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <aside id="sidebar-left">
+        <div class="scroll-area">
+            <div class="pane-title">Raga Selection</div>
+            <select id="masterRagaList" onchange="selectRaga(this.value)"></select>
+
+            <div style="display:flex; gap:8px; margin-bottom:25px">
+                <button onclick="playFullScale(true)" style="flex:1; padding:12px; background:var(--success); border:none; border-radius:8px; color:white; font-weight:bold; cursor:pointer;">↑ ARO</button>
+                <button onclick="playFullScale(false)" style="flex:1; padding:12px; background:var(--secondary); border:none; border-radius:8px; color:white; font-weight:bold; cursor:pointer;">↓ AVA</button>
+            </div>
+            
+            <div class="pane-title">Svara Configuration</div>
+            <select id="rgFilter" onchange="manualCalculate()"></select>
+            <select id="dnFilter" onchange="manualCalculate()"></select>
+            <select id="mFilter" onchange="manualCalculate()">
+                <option value="0">M1 (Suddha)</option><option value="36">M2 (Prati)</option>
+            </select>
+        </div>
+    </aside>
+
+    <main>
+        <div style="text-align:center">
+            <h1 id="ragaName" style="margin:0; font-size:3.5rem; letter-spacing:-1px;">Kanakangi</h1>
+            <div id="ragaSub" style="color:var(--success); font-weight:bold; font-size:1.5rem; font-family:monospace;">#1</div>
+        </div>
+        <div id="keyboard" class="keyboard"></div>
+        <div class="kb-hint">PC Keyboard: A W S E D F T G Y H U J K</div>
+    </main>
+
+    <aside id="sidebar-right">
+        <div class="scroll-area">
+            <div class="pane-title">Off-by-One Relations</div>
+            <select id="select-ones" onchange="handleDropdownChange(this, 1)"></select>
+
+            <div class="pane-title">Off-by-Two Relations</div>
+            <select id="select-twos" onchange="handleDropdownChange(this, 2)"></select>
+
+            <div id="comparison-zone"></div>
+        </div>
+    </aside>
+
+    <script>
+        const ragaNames = ["Kanakangi", "Ratnangi", "Ganamurti", "Vanaspati", "Manavati", "Tanarupi", "Senavati", "Hanumatodi", "Dhenuka", "Natakapriya", "Kokilapriya", "Rupavati", "Gayakapriya", "Vakulabharanam", "Mayamalavagowla", "Chakravakam", "Suryakantam", "Hatakambari", "Jhankaradhwani", "Natabhairavi", "Keeravani", "Kharaharapriya", "Gourimanohari", "Varunapriya", "Mararanjani", "Charukesi", "Sarasangi", "Harikambhoji", "Dheerasankarabharanam", "Naganandini", "Yagapriya", "Ragavardhini", "Gangeyabhushani", "Vagadheeswari", "Shulini", "Chalanata", "Salagam", "Jalarnavam", "Jhalavarali", "Navaneetam", "Pavani", "Raghupriya", "Gavambhodhi", "Bhavapriya", "Shubhapantuarali", "Shadvidhamargini", "Suvarnangi", "Divyamani", "Dhavalambari", "Namanarayani", "Kamavardhini", "Ramapriya", "Gamanasrama", "Vishwambhari", "Shyamala", "Shanmukhapriya", "Simhendramadhyamam", "Hemavati", "Dharmavati", "Neetimati", "Rishabhapriya", "Latangi", "Vachaspati", "Mechakalyani", "Chitrambari", "Sucharitra", "Jyotiswarupini", "Dhatuvardhini", "Nasikabhushani", "Kosalam", "Rasikapriya"];
+        const fullLabels = { 0:"S", 1:"R1", 2:"R2/G1", 3:"R3/G2", 4:"G3", 5:"M1", 6:"M2", 7:"P", 8:"D1", 9:"D2/N1", 10:"D3/N2", 11:"N3", 12:"Ṡ" };
+        const shortLabels = { 0:"S", 1:"R1", 2:"R2", 3:"G2", 4:"G3", 5:"M1", 6:"M2", 7:"P", 8:"D1", 9:"D2", 10:"N2", 11:"N3", 12:"Ṡ" };
+        const freqs = [261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 370.00, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25];
+        const keyMap = {'a':0, 'w':1, 's':2, 'e':3, 'd':4, 'f':5, 't':6, 'g':7, 'y':8, 'h':9, 'u':10, 'j':11, 'k':12};
+        let currentScale = [];
+
+        function handleDropdownChange(el, type) {
+            const other = document.getElementById(type === 1 ? 'select-twos' : 'select-ones');
+            other.value = ""; 
+            updateRelationUI(el.value);
+        }
+
+        function getRagaScale(idx) {
+            const m = idx > 36 ? 36 : 0;
+            const rem = idx - m - 1;
+            const rgNotes = [[1,2], [1,3], [1,4], [2,3], [2,4], [3,4]][Math.floor(rem / 6)];
+            const dnNotes = [[8,9], [8,10], [8,11], [9,10], [9,11], [10,11]][rem % 6];
+            return [0, ...rgNotes, (m === 0 ? 5 : 6), 7, ...dnNotes, 12];
+        }
+
+        function selectRaga(idx) {
+            idx = parseInt(idx);
+            const mVal = idx > 36 ? 36 : 0;
+            const rem = idx - mVal - 1;
+            document.getElementById('mFilter').value = mVal;
+            document.getElementById('rgFilter').value = Math.floor(rem / 6) * 6;
+            document.getElementById('dnFilter').value = (rem % 6) + 1;
+            manualCalculate();
+            document.getElementById('comparison-zone').innerHTML = '';
+        }
+
+        function manualCalculate() {
+            const idx = parseInt(document.getElementById('mFilter').value) + parseInt(document.getElementById('rgFilter').value) + parseInt(document.getElementById('dnFilter').value);
+            currentScale = getRagaScale(idx);
+            document.getElementById('masterRagaList').value = idx;
+            document.getElementById('ragaName').innerText = ragaNames[idx-1];
+            document.getElementById('ragaSub').innerText = `#${idx}`;
+            updateKeyboard();
+            updateNeighborDropdowns(idx);
+        }
+
+        function updateNeighborDropdowns(currIdx) {
+            const s1 = document.getElementById('select-ones');
+            const s2 = document.getElementById('select-twos');
+            s1.innerHTML = '<option value="">-- select --</option>';
+            s2.innerHTML = '<option value="">-- select --</option>';
+            for(let i=1; i<=72; i++) {
+                if(i === currIdx) continue;
+                let other = getRagaScale(i);
+                let diffs = 0;
+                for(let j=0; j<8; j++) if(currentScale[j] !== other[j]) diffs++;
+                if(diffs === 1) s1.innerHTML += `<option value="${i}">${i}. ${ragaNames[i-1]}</option>`;
+                if(diffs === 2) s2.innerHTML += `<option value="${i}">${i}. ${ragaNames[i-1]}</option>`;
+            }
+        }
+
+        function updateRelationUI(id) {
+            if(!id) return;
+            const targetScale = getRagaScale(id);
+            const zone = document.getElementById('comparison-zone');
+            let diffs = [];
+            for(let j=0; j<8; j++) if(currentScale[j] !== targetScale[j]) diffs.push(j);
+
+            let html = `<div class="delta-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <strong style="color:var(--success)">${ragaNames[id-1]} (#${id})</strong>
+                    <button class="btn-pivot" onclick="selectRaga(${id})">PIVOT</button>
+                </div>`;
+            diffs.forEach((dIdx) => {
+                let subSeq = [Math.max(0, dIdx-1), dIdx, Math.min(7, dIdx+1)];
+                html += `
+                    <div class="delta-row">
+                        <span style="font-size:0.6rem; color:var(--accent)">S${dIdx+1}</span>
+                        <div class="note-box">${shortLabels[currentScale[dIdx]]}</div>
+                        <div style="color:var(--secondary)">➔</div>
+                        <div class="note-box shift">${shortLabels[targetScale[dIdx]]}</div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-play" style="background:var(--accent)" onclick='audition([${subSeq}], ${JSON.stringify(targetScale)}, ${dIdx})'>3-NOTE</button>
+                        <button class="btn-play" style="background:var(--secondary)" onclick='audition([0,1,2,3,4,5,6,7], ${JSON.stringify(targetScale)}, ${dIdx})'>SCALE</button>
+                    </div>`;
+            });
+            html += '</div>';
+            zone.innerHTML = html;
+        }
+
+        async function audition(indices, target, diffIdx) {
+            const ghost = document.getElementById(`ghost-${target[diffIdx]}`);
+            if(ghost) { ghost.innerText = "➔ " + shortLabels[target[diffIdx]]; ghost.style.display = 'block'; }
+            for(let idx of indices) { playNote(freqs[currentScale[idx]], currentScale[idx]); await new Promise(r => setTimeout(r, 450)); }
+            await new Promise(r => setTimeout(r, 700));
+            for(let idx of indices) { playNote(freqs[target[idx]], target[idx]); await new Promise(r => setTimeout(r, 450)); }
+            if(ghost) ghost.style.display = 'none';
+        }
+
+        async function playFullScale(asc) {
+            const notes = asc ? currentScale : [...currentScale].reverse();
+            for(let n of notes) { playNote(freqs[n], n); await new Promise(r => setTimeout(r, 400)); }
+        }
+
+        function playNote(f, kIdx) {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const g = ctx.createGain();
+            osc.type = 'triangle'; osc.frequency.value = f;
+            g.gain.setValueAtTime(0.15, ctx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+            osc.connect(g); g.connect(ctx.destination);
+            osc.start(); osc.stop(ctx.currentTime + 0.8);
+            const el = document.getElementById(`key-${kIdx}`);
+            if(el) { el.classList.add('playing'); setTimeout(() => el.classList.remove('playing'), 250); }
+        }
+
+        window.addEventListener('keydown', e => {
+            if(keyMap[e.key] !== undefined) playNote(freqs[keyMap[e.key]], keyMap[e.key]);
+        });
+
+        function updateKeyboard() {
+            const kb = document.getElementById('keyboard');
+            kb.innerHTML = '';
+            for (let i = 0; i < 13; i++) {
+                const isBlack = [1, 3, 6, 8, 10].includes(i % 12);
+                const isActive = currentScale.includes(i);
+                const k = document.createElement('div');
+                k.className = `key ${isBlack ? 'black' : ''} ${isActive ? 'active-raga' : ''}`;
+                k.id = `key-${i}`;
+                k.innerHTML = `<div id="ghost-${i}" class="ghost-label"></div>`;
+                if(isActive) k.innerHTML += `<div>${fullLabels[i].replace('/', '<br>')}</div>`;
+                k.onmousedown = () => playNote(freqs[i], i);
+                kb.appendChild(k);
+            }
+        }
+
+        function init() {
+            const master = document.getElementById('masterRagaList');
+            ragaNames.forEach((n, i) => master.innerHTML += `<option value="${i+1}">${i+1}. ${n}</option>`);
+            const rgF = document.getElementById('rgFilter');
+            const dnF = document.getElementById('dnFilter');
+            ["R1 G1", "R1 G2", "R1 G3", "R2 G2", "R2 G3", "R3 G3"].forEach((l, i) => rgF.innerHTML += `<option value="${i*6}">${l}</option>`);
+            ["D1 N1", "D1 N2", "D1 N3", "D2 N2", "D2 N3", "D3 N3"].forEach((l, i) => dnF.innerHTML += `<option value="${i+1}">${l}</option>`);
+            selectRaga(1);
+        }
+        init();
+    </script>
+</body>
+</html>
