@@ -1,0 +1,1882 @@
+{
+  "sequences": [
+    {
+      "name": "Bhantureethi K1",
+      "tonic": 130.81,
+      "bpm": 120,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 38,
+      "id": "647901fa-0052-42b4-ae27-e88dc4c8efa8"
+    },
+    {
+      "name": "Bhantureethi K2",
+      "tonic": 130.81,
+      "bpm": 120,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 38,
+      "id": "e7e7c4a8-444c-4a78-822e-503417247cc7"
+    },
+    {
+      "name": "Bhantureethi K3",
+      "tonic": 130.81,
+      "bpm": 120,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 38,
+      "id": "9277639d-bea0-414c-98cd-a229bbd806b4"
+    },
+    {
+      "name": "Bhantureethi K4",
+      "tonic": 130.81,
+      "bpm": 120,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "M2",
+          "octave": 3
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 3
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 3
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 38,
+      "id": "cc1b8938-955b-4cad-9517-c1b56c9c37f7"
+    },
+    {
+      "name": "Bhantureethi K5",
+      "tonic": 130.81,
+      "bpm": 90,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 70,
+      "id": "eded9fa0-7a41-40aa-8145-1c3a9c9e17ce"
+    },
+    {
+      "name": "Bhantureethi K6",
+      "tonic": 130.81,
+      "bpm": 90,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 70,
+      "id": "3860893e-2d8b-4136-b633-3815067b72cb"
+    }
+  ],
+  "projectDefaultOctave": 2,
+  "projectPlayBpm": 90
+}
