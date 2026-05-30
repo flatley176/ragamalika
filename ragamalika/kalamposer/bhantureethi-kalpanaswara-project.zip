@@ -3,7 +3,7 @@
     {
       "name": "Bhantureethi K1",
       "tonic": 130.81,
-      "bpm": 120,
+      "bpm": 90,
       "aksharasPerBeat": 4,
       "beats": 8,
       "instrument": "violin",
@@ -1875,6 +1875,532 @@
       "playStart": 7,
       "playStop": 70,
       "id": "3860893e-2d8b-4136-b633-3815067b72cb"
+    },
+    {
+      "name": "Bhantureethi K7",
+      "tonic": 130.81,
+      "bpm": 90,
+      "aksharasPerBeat": 4,
+      "beats": 8,
+      "instrument": "violin",
+      "sequence": [
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 4
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "S",
+          "octave": 3
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "P",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "M2",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "R2",
+          "octave": 2
+        },
+        {
+          "swara": "S",
+          "octave": 2
+        },
+        {
+          "swara": "N3",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 1
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        },
+        {
+          "swara": "-",
+          "octave": 2
+        }
+      ],
+      "defaultOctave": 2,
+      "playStart": 7,
+      "playStop": 102,
+      "id": "56d42b32-da6d-4cff-b695-f376639ab169"
     }
   ],
   "projectDefaultOctave": 2,

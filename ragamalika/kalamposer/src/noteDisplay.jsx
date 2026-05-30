@@ -115,7 +115,7 @@ export function playRangeLabel(seq) {
   return `Playing notes ${from + 1}–${to + 1} of ${length}`;
 }
 
-export function PlayedNotes({ seq, projectDefaultOctave }) {
+export function PlayedNotes({ seq, projectDefaultOctave, playingNoteIndex, highlightWindow }) {
   const items = playedNoteItems(seq, projectDefaultOctave);
   if (!items.length) return <>—</>;
 
@@ -126,6 +126,22 @@ export function PlayedNotes({ seq, projectDefaultOctave }) {
     rows.push(items.slice(i, i + wrap));
   }
 
+  // Which row is currently being played? null when nothing is playing.
+  const activeRow = (playingNoteIndex != null && playingNoteIndex >= 0)
+    ? Math.floor(playingNoteIndex / wrap)
+    : null;
+
+  // Sub-window mode: a fixed chunk of cells within the active row is highlighted.
+  // windowStart/windowEnd are column indices (within the row) of the active window.
+  const useSubWindow = activeRow !== null && highlightWindow != null && highlightWindow < wrap;
+  let windowStart = null;
+  let windowEnd = null;
+  if (useSubWindow) {
+    const noteIndexWithinRow = playingNoteIndex % wrap;
+    windowStart = Math.floor(noteIndexWithinRow / highlightWindow) * highlightWindow;
+    windowEnd = windowStart + highlightWindow; // exclusive
+  }
+
   return (
     <div style={{ width: '100%', minWidth: 0 }}>
       {rangeHint && (
@@ -133,17 +149,72 @@ export function PlayedNotes({ seq, projectDefaultOctave }) {
       )}
       <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
         <div style={{ display: 'inline-block' }}>
-          {rows.map((row, rowIndex) => (
-            <div key={rowIndex} style={{ display: 'flex', flexDirection: 'row', whiteSpace: 'nowrap' }}>
-              {row.map((item, colIndex) => (
-                <NoteCell
-                  key={`${rowIndex}-${colIndex}`}
-                  item={item}
-                  projectDefaultOctave={projectDefaultOctave}
-                />
-              ))}
-            </div>
-          ))}
+          {rows.map((row, rowIndex) => {
+            const isActive = rowIndex === activeRow;
+            // In sub-window mode the row gets just a faint wash so the arrow reads
+            // without over-colouring; in full-row mode use the warmer wash.
+            const rowBg = isActive
+              ? (useSubWindow ? 'rgba(255, 200, 80, 0.07)' : 'rgba(255, 200, 80, 0.18)')
+              : 'transparent';
+
+            return (
+              <div
+                key={rowIndex}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  whiteSpace: 'nowrap',
+                  alignItems: 'center',
+                  borderRadius: 3,
+                  background: rowBg,
+                  transition: 'background 0.15s',
+                }}
+              >
+                {/* Gutter: arrow on active row, blank spacer otherwise */}
+                <span
+                  aria-hidden
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '1.4em',
+                    minWidth: '1.4em',
+                    fontSize: '0.75em',
+                    color: '#d4900a',
+                    fontWeight: 700,
+                    flexShrink: 0,
+                    userSelect: 'none',
+                    transition: 'opacity 0.15s',
+                    opacity: isActive ? 1 : 0,
+                  }}
+                >
+                  ▶
+                </span>
+                {row.map((item, colIndex) => {
+                  const inWindow = isActive && useSubWindow
+                    && colIndex >= windowStart && colIndex < windowEnd;
+                  return (
+                    <span
+                      key={`${rowIndex}-${colIndex}`}
+                      style={{
+                        display: 'inline-flex',
+                        borderRadius: 2,
+                        background: inWindow ? 'rgba(255, 180, 0, 0.38)' : 'transparent',
+                        borderBottom: inWindow ? '2px solid #d4900a' : '2px solid transparent',
+                        transition: 'background 0.12s, border-color 0.12s',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <NoteCell
+                        item={item}
+                        projectDefaultOctave={projectDefaultOctave}
+                      />
+                    </span>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

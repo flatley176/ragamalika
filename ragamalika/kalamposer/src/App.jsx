@@ -34,6 +34,21 @@ const DEFAULT_PROJECT_FILENAME = 'kalamposer-project.json';
 const supportsFileSystemAccess = () =>
   typeof window !== 'undefined' && 'showSaveFilePicker' in window;
 
+/** Build the sorted list of highlight-window sizes available for this project.
+ *  Options are multiples of each sequence's aksharasPerBeat, up to the row
+ *  width (2 × aksharasPerBeat). Deduped and sorted numerically. */
+const getHighlightOptions = (sequences) => {
+  const opts = new Set();
+  for (const seq of sequences) {
+    const apb = seq.aksharasPerBeat ?? 4;
+    const rowWidth = 2 * apb;          // one full row
+    for (let mult = 1; mult * apb <= rowWidth; mult++) {
+      opts.add(mult * apb);
+    }
+  }
+  return Array.from(opts).sort((a, b) => a - b);
+};
+
 const newSequenceId = () =>
   (typeof crypto !== 'undefined' && crypto.randomUUID)
     ? crypto.randomUUID()
@@ -130,18 +145,42 @@ const playProjectSequence = async (seq, projectPlayBpm) => {
   await new Promise((resolve) => setTimeout(resolve, endOffset * 1000 + 150));
 };
 
-/** Play every sequence back-to-back on one timeline (no gap between sequences). */
-const playProjectSequencesContinuous = async (sequences, projectPlayBpm) => {
+/** Play every sequence back-to-back on one timeline (no gap between sequences).
+ *  onSequenceStart(seqIdx) fires just before each sequence's notes begin.
+ *  onNoteIndex(seqIdx, noteIdx) fires as each akshara begins playing.
+ *  onDone() fires when all audio has finished.
+ */
+const playProjectSequencesContinuous = async (sequences, projectPlayBpm, { onSequenceStart, onNoteIndex, onDone } = {}) => {
   if (!sequences.length) return;
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
   if (ctx.state === 'suspended') await ctx.resume();
   const audioStart = ctx.currentTime + 0.1;
   const playerCache = {};
+  // Pre-schedule all sequences and collect per-sequence info.
+  const seqMeta = []; // { startOffset, secondsPerAkshara, from, noteCount }
   let offset = 0;
   for (const seq of sequences) {
+    const bpm = effectiveBpm(seq, projectPlayBpm);
+    const secondsPerAkshara = (60.0 / bpm) / seq.aksharasPerBeat;
+    const { from, noteCount } = resolvePlayRange(seq.playStart, seq.playStop, (seq.sequence || []).length);
+    seqMeta.push({ startOffset: offset, secondsPerAkshara, from, noteCount });
     offset = await scheduleProjectSequence(ctx, playerCache, seq, audioStart, offset, projectPlayBpm);
   }
-  await new Promise((resolve) => setTimeout(resolve, offset * 1000 + 150));
+  const totalMs = offset * 1000 + 150;
+  // Wall-clock reference: audioStart is (ctx.currentTime + 0.1) seconds from now.
+  const wallStart = Date.now() + 100; // ~100 ms head start matches the 0.1 s audio offset
+  // Schedule per-sequence and per-akshara highlight callbacks.
+  seqMeta.forEach(({ startOffset, secondsPerAkshara, from, noteCount }, seqIdx) => {
+    const seqDelay = Math.max(0, wallStart + startOffset * 1000 - Date.now());
+    setTimeout(() => { if (onSequenceStart) onSequenceStart(seqIdx); }, seqDelay);
+    for (let i = 0; i < noteCount; i++) {
+      const noteDelay = Math.max(0, wallStart + (startOffset + i * secondsPerAkshara) * 1000 - Date.now());
+      const noteIdx = from + i;
+      setTimeout(() => { if (onNoteIndex) onNoteIndex(seqIdx, noteIdx); }, noteDelay);
+    }
+  });
+  await new Promise((resolve) => setTimeout(resolve, totalMs));
+  if (onDone) onDone();
 };
 
 function App() {
@@ -153,6 +192,12 @@ function App() {
   const [projectFileName, setProjectFileName] = useState(null);
   const [projectPlayBpm, setProjectPlayBpm] = useState(null);
   const [notice, setNotice] = useState(null);
+  // Index of the sequence currently highlighted during "Play All" (-1 = none)
+  const [playingSequenceIdx, setPlayingSequenceIdx] = useState(-1);
+  // { seqIdx, noteIdx } for the currently-playing akshara, or null
+  const [playingNote, setPlayingNote] = useState(null);
+  // Number of aksharas per highlight sub-window (null = full row)
+  const [highlightWindow, setHighlightWindow] = useState(null);
   const projectFileHandleRef = useRef(null);
   const loadFileInputRef = useRef(null);
   const noticeTimerRef = useRef(null);
@@ -472,14 +517,54 @@ function App() {
                   </div>
                 )}
               </div>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
                 {projectSequences.length > 1 && (
-                  <button
-                    onClick={() => playProjectSequencesContinuous(projectSequences, projectPlayBpm)}
-                    style={{ padding: '8px 14px', borderRadius: 4, border: 'none', background: '#6f42c1', color: 'white', cursor: 'pointer' }}
-                  >
-                    Play All
-                  </button>
+                  <>
+                    <button
+                      onClick={() => {
+                        setPlayingSequenceIdx(-1);
+                        setPlayingNote(null);
+                        playProjectSequencesContinuous(projectSequences, projectPlayBpm, {
+                          onSequenceStart: (idx) => setPlayingSequenceIdx(idx),
+                          onNoteIndex: (seqIdx, noteIdx) => setPlayingNote({ seqIdx, noteIdx }),
+                          onDone: () => { setPlayingSequenceIdx(-1); setPlayingNote(null); },
+                        });
+                      }}
+                      style={{ padding: '8px 14px', borderRadius: 4, border: 'none', background: '#6f42c1', color: 'white', cursor: 'pointer' }}
+                    >
+                      ▶ Play All
+                    </button>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: '#555', userSelect: 'none' }}>
+                      <span style={{ whiteSpace: 'nowrap' }}>🔦 Highlight</span>
+                      <select
+                        value={highlightWindow ?? ''}
+                        onChange={(e) => setHighlightWindow(e.target.value === '' ? null : Number(e.target.value))}
+                        style={{
+                          padding: '4px 6px',
+                          borderRadius: 4,
+                          border: '1px solid #bbb',
+                          fontSize: 12,
+                          background: '#fff',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <option value=''>Full row</option>
+                        {getHighlightOptions(projectSequences)
+                          .filter(n => {
+                            // Only show sub-row options (exclude values that equal
+                            // the row width for EVERY sequence — those are the same as Full row).
+                            const allFullRow = projectSequences.every(
+                              s => n >= 2 * (s.aksharasPerBeat ?? 4)
+                            );
+                            return !allFullRow;
+                          })
+                          .map(n => (
+                            <option key={n} value={n}>{n} aksharas</option>
+                          ))
+                        }
+                      </select>
+                    </label>
+                  </>
                 )}
                 <button
                   onClick={handleNewSequence}
@@ -501,18 +586,39 @@ function App() {
               </div>
             ) : (
               <ul style={{ listStyle: 'none', padding: 0 }}>
-                {projectSequences.map((seq, idx) => (
-                  <li key={seq.id} style={{ marginBottom: 12, padding: 10, border: '1px solid #eee', borderRadius: 6, background: '#f5f5fa' }}>
+                {projectSequences.map((seq, idx) => {
+                  const isPlaying = idx === playingSequenceIdx;
+                  return (
+                  <li
+                    key={seq.id}
+                    style={{
+                      marginBottom: 12,
+                      padding: 10,
+                      border: isPlaying ? '1px solid #6f42c1' : '1px solid #eee',
+                      borderLeft: isPlaying ? '4px solid #6f42c1' : '4px solid transparent',
+                      borderRadius: 6,
+                      background: isPlaying ? '#f3eeff' : '#f5f5fa',
+                      transition: 'background 0.25s, border-color 0.25s',
+                    }}
+                  >
                     <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 12, color: '#888', marginBottom: 2 }}>Sequence {idx + 1}</div>
+                        <div style={{ fontSize: 12, color: isPlaying ? '#6f42c1' : '#888', marginBottom: 2, fontWeight: isPlaying ? 700 : 400 }}>
+                          {isPlaying ? '▶ ' : ''}
+                          Sequence {idx + 1}
+                        </div>
                         <div><strong>Name:</strong> {seq.name || '(Untitled)'}</div>
                         <div style={{ fontSize: 13, color: '#444' }}>
                           <strong>Instrument:</strong> {seq.instrument} — <strong>Beats:</strong> {seq.beats} | <strong>Aksharas/beat:</strong> {seq.aksharasPerBeat}
                           {' '}— <strong>Composed BPM:</strong> {seq.bpm ?? 120}
                         </div>
                         <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.6 }}>
-                          <PlayedNotes seq={seq} projectDefaultOctave={projectDefaultOctave} />
+                           <PlayedNotes
+                             seq={seq}
+                             projectDefaultOctave={projectDefaultOctave}
+                             playingNoteIndex={playingNote?.seqIdx === idx ? playingNote.noteIdx : null}
+                             highlightWindow={highlightWindow}
+                           />
                         </div>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -523,7 +629,8 @@ function App() {
                       </div>
                     </div>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             )}
           </div>
