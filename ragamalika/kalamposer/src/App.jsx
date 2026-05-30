@@ -5,6 +5,7 @@ import ErrorBoundary from './ErrorBoundary';
 import Soundfont from 'soundfont-player';
 import { resolvePlayRange } from './playbackRange';
 import { inferProjectDefaultOctave, PlayedNotes } from './noteDisplay';
+import { wavToMp3 } from './wavToMp3';
 
 const SWARA_MAP = {
   '-': null,
@@ -198,6 +199,7 @@ function App() {
   const [playingNote, setPlayingNote] = useState(null);
   // Number of aksharas per highlight sub-window (null = full row)
   const [highlightWindow, setHighlightWindow] = useState(null);
+  const [isExporting, setIsExporting] = useState(false);
   const projectFileHandleRef = useRef(null);
   const loadFileInputRef = useRef(null);
   const noticeTimerRef = useRef(null);
@@ -408,6 +410,58 @@ function App() {
     }
   };
 
+  const handleExportMp3 = async () => {
+    if (!projectSequences.length) return;
+    setIsExporting(true);
+    showNotice('Exporting to MP3... Please wait.', 'info');
+    try {
+      const { audioBufferToWav } = await import('./audioBufferToWav.js');
+
+      let duration = 0;
+      for (const seq of projectSequences) {
+        const bpm = effectiveBpm(seq, projectPlayBpm);
+        const secondsPerAkshara = (60.0 / bpm) / seq.aksharasPerBeat;
+        const { noteCount } = resolvePlayRange(seq.playStart, seq.playStop, (seq.sequence || []).length);
+        duration += noteCount * secondsPerAkshara;
+      }
+
+      if (duration <= 0) {
+        setIsExporting(false);
+        showNotice('No playable notes to export.', 'error');
+        return;
+      }
+
+      const sampleRate = 44100;
+      const offlineCtx = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(2, Math.ceil((duration + 1.5) * sampleRate), sampleRate);
+      
+      const playerCache = {};
+      let offset = 0;
+      for (const seq of projectSequences) {
+        offset = await scheduleProjectSequence(offlineCtx, playerCache, seq, 0, offset, projectPlayBpm);
+      }
+
+      const renderedBuffer = await offlineCtx.startRendering();
+      const wavData = audioBufferToWav(renderedBuffer);
+      const mp3Buffer = wavToMp3(wavData);
+
+      const mp3Blob = new Blob([mp3Buffer], { type: 'audio/mp3' });
+      const url = URL.createObjectURL(mp3Blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      const baseName = projectFileName ? projectFileName.replace(/\.json$/i, '') : 'kalamposer-project';
+      a.download = `${baseName}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 100);
+      showNotice('Export complete!', 'success');
+    } catch (err) {
+      showNotice(`Export failed: ${err.message}`, 'error');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   const noticeStyles = {
     success: { background: '#d4edda', color: '#155724', border: '1px solid #c3e6cb' },
     error: { background: '#f8d7da', color: '#721c24', border: '1px solid #f5c6cb' },
@@ -533,6 +587,13 @@ function App() {
                       style={{ padding: '8px 14px', borderRadius: 4, border: 'none', background: '#6f42c1', color: 'white', cursor: 'pointer' }}
                     >
                       ▶ Play All
+                    </button>
+                    <button
+                      onClick={handleExportMp3}
+                      disabled={isExporting}
+                      style={{ padding: '8px 14px', borderRadius: 4, border: '1px solid #6f42c1', background: isExporting ? '#f3eeff' : '#fff', color: '#6f42c1', cursor: isExporting ? 'wait' : 'pointer', fontWeight: 600 }}
+                    >
+                      {isExporting ? 'Exporting...' : 'Export MP3'}
                     </button>
                     <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: '#555', userSelect: 'none' }}>
                       <span style={{ whiteSpace: 'nowrap' }}>🔦 Highlight</span>

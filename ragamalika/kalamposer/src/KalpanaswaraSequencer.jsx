@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import lamejs from 'lamejs';
 import { wavToMp3 } from './wavToMp3';
 import Soundfont from 'soundfont-player';
 import { resolvePlayRange, playRangeForSave } from './playbackRange';
@@ -265,6 +264,7 @@ export default function KalpanaswaraSequencer({ initialData, isEditing = false, 
       osc.stop(noteStartTime + secondsPerAkshara);
     }
     const renderedBuffer = await offlineCtx.startRendering();
+    const { audioBufferToWav } = await import('./audioBufferToWav.js');
     const wavData = audioBufferToWav(renderedBuffer);
     if (asMp3) {
       const mp3Buffer = wavToMp3(wavData);

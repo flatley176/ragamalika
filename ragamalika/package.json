@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "lamejs": "^1.2.1",
+    "soundfont-player": "^0.12.0"
+  }
+}
